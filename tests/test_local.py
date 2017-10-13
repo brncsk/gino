@@ -1,7 +1,7 @@
 import asyncio
 
 import pytest
-from gino import get_local, reset_local, is_local_root
+from gino.local import get_local, reset_local, is_local_root
 
 pytestmark = pytest.mark.asyncio
 

@@ -57,7 +57,7 @@ A piece of code is worth a thousand words:
 .. code-block:: python
 
    import asyncio
-   from gino import Gino, enable_task_local
+   from gino import Gino, enable_connection_reuse
 
    db = Gino()
 
@@ -105,7 +105,7 @@ A piece of code is worth a thousand words:
 
 
    loop = asyncio.get_event_loop()
-   enable_task_local(loop)
+   enable_connection_reuse(loop)
    loop.run_until_complete(main())
 
 The code explains a lot, but not everything. Let's go through again briefly.
@@ -312,8 +312,8 @@ builtin task local hack before any tasks are created:
 
 .. code-block:: python
 
-   from gino import enable_task_local
-   enable_task_local()
+   from gino import enable_connection_reuse
+   enable_connection_reuse()
 
 This switch creates a local storage for each coroutine, where ``db.acquire()``
 shall store the connection object. Hence executions within the acquire context

@@ -1,4 +1,4 @@
-from gino import Gino, enable_task_local
+from gino import Gino, enable_connection_reuse
 
 db = Gino()
 
@@ -43,5 +43,5 @@ if __name__ == '__main__':
     import asyncio
 
     loop = asyncio.get_event_loop()
-    enable_task_local(loop)
+    enable_connection_reuse(loop)
     loop.run_until_complete(main())

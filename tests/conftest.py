@@ -43,6 +43,6 @@ def random_name(length=8) -> str:
 
 @pytest.fixture
 def task_local(event_loop):
-    gino.enable_task_local(event_loop)
+    gino.enable_connection_reuse(event_loop)
     yield
-    gino.disable_task_local(event_loop)
+    gino.disable_connection_reuse(event_loop)
